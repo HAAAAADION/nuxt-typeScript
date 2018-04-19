@@ -43,7 +43,7 @@ export default class extends Vue {
   }
   async mounted() {
     const a = await qqq.getSelected()
-    console.log('qweqwe: ', asd.topbar);
+    // console.log('qweqwe: ', asd.topbar);
     console.log(a);
   }
 }
