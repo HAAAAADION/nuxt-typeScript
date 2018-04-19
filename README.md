@@ -1,6 +1,6 @@
 # 24haowan-proxy-admin
 
-> Nuxt.js TypeScript project
+> Nuxt.js project
 
 ## Build Setup
 

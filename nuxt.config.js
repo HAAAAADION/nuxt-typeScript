@@ -1,64 +1,46 @@
-const parseArgs = require("minimist")
-const argv = parseArgs(process.argv.slice(2), {
-  alias: {
-    H: "hostname",
-    p: "port"
-  },
-  string: ["H"],
-  unknown: parameter => false
-})
-
-const port =
-  argv.port ||
-  process.env.PORT ||
-  process.env.npm_package_config_nuxt_port ||
-  "3000"
-const host =
-  argv.hostname ||
-  process.env.HOST ||
-  process.env.npm_package_config_nuxt_host ||
-  "localhost"
 module.exports = {
-  env: {
-    baseUrl:
-      process.env.BASE_URL ||
-      `http://${host}:${port}`
-  },
+  srcDir: 'src',
+  /*
+  ** Headers of the page
+  */
   head: {
-    title: "tt1",
+    title: '24haowan-proxy-admin',
     meta: [
-      { charset: "utf-8" },
-      {
-        name: "viewport",
-        content:
-          "width=device-width, initial-scale=1"
-      },
-      {
-        hid: "description",
-        name: "description",
-        content: "Nuxt.js project"
-      }
+      { charset: 'utf-8' },
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+      { hid: 'description', name: 'description', content: 'Nuxt.js project' }
     ],
     link: [
-      {
-        rel: "icon",
-        type: "image/x-icon",
-        href: "/favicon.ico"
-      }
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
   /*
-  ** Customize the progress-bar color
+  ** Customize the progress bar color
   */
-  loading: { color: "#3B8070" },
+  loading: { color: '#3B8070' },
   /*
   ** Build configuration
   */
-  css: ["~/assets/css/main.css"],
-  build: {},
-  modules: [
-    "@nuxtjs/axios",
-    "~/modules/typescript.js"
-  ],
-  axios: {}
+  build: {
+    /*
+    ** Run ESLint on save
+    */
+    // extend (config, { isDev, isClient }) {
+    //   if (isDev && isClient) {
+    //     config.module.rules.push({
+    //       enforce: 'pre',
+    //       test: /\.(js|vue)$/,
+    //       loader: 'eslint-loader',
+    //       exclude: /(node_modules)/
+    //     })
+    //   }
+    // }
+    extend (config) {
+      for (rule of config.module.rules) {
+        if (rule.loader === 'vue-loader') {
+          rule.options.loaders.ts = 'ts-loader?{"appendTsSuffixTo":["\\\\.vue$"]}'
+        }
+      }
+    }
+  }
 }

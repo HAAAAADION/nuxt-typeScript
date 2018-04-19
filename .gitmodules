@@ -1,6 +1,0 @@
-[submodule "src/lib/store"]
-	path = src/lib/store
-	url = https://github.com/GuangZhouShanyouGame/24-store.git
-[submodule "src/lib/24"]
-	path = src/lib/24
-	url = https://github.com/GuangZhouShanyouGame/24haowan_front_tools.git
