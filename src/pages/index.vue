@@ -29,7 +29,7 @@ import {
 } from "nuxt-property-decorator"
 import AppLogo from '@/components/AppLogo.vue'
 // import asd from '@/assets/common-config.json'
-// import qqq from '@/lib/store/io/games'
+import qqq from '@/lib/store/io/games'
 
 @Component({
   components: {
@@ -37,14 +37,14 @@ import AppLogo from '@/components/AppLogo.vue'
   }
 })
 export default class extends Vue {
-  public msg = 'qwe'
+  public msg: string = 'qwe'
   get asd (): string {
     return 'qwe'
   }
   async mounted() {
-    // const a = await qqq.getSelected()
-    // console.log('qweqwe: ', asd);
-    // console.log(a);
+    const a = await qqq.getSelected()
+    console.log('qweqwe: ', asd.topbar);
+    console.log(a);
   }
 }
 </script>
